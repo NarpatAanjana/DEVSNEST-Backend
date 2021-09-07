@@ -1,0 +1,85 @@
+
+@@ -1,4 +1,5 @@
+/////////////////////////////////////----------------------- DAY 2 ---- PRACTICE SQL AND FOREIGN KEYS------------------------------------------///////////////////////////////
+/////////////////////////////////////----------------------- THA 2 ---- PRACTICE SQL AND FOREIGN KEYS------------------------------------------///////////////////////////////
+______________________________________________________________________________________________________________________________________________________________________________
+
+
+Microsoft Windows [Version 10.0.18363.1500]
+@@ -104,12 +105,12 @@ postgres=# DROP TABLE IF EXISTS COMPANY;
+DROP TABLE
+
+postgres=# CREATE TABLE COMPANY(
+postgres(#  ID INT PRIMARY KEY     NOT NULL,
+postgres(#    NAME           TEXT    NOT NULL,
+postgres(#    AGE            INT     NOT NULL,
+postgres(#    ADDRESS        CHAR(50),
+postgres(#    SALARY         REAL,
+postgres(#    JOIN_DATE    DATE
+postgres(#  ID INT PRIMARY KEY NOT NULL,
+postgres(#    NAME TEXT NOT NULL,
+postgres(#    AGE  INT  NOT NULL,
+postgres(#    ADDRESS  CHAR(50),
+postgres(#    SALARY   REAL,
+postgres(#    JOIN_DATE   DATE
+postgres(# );
+CREATE TABLE
+
+@@ -123,13 +124,17 @@ postgres=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (4,
+INSERT 0 2
+postgres=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00, '2007-12-13' ), (5, 'David', 27, 'Texas', 85000.00, '2007-12-13');
+
+
+postgres=# SELECT (15 + 6) AS ADDITION ;
+ addition
+----------
+       21
+(1 row)
+
+
+
+/*  COUNT(*) show Rows Of The Table    */
+
+postgres=# SELECT COUNT(*) AS "RECORDS" FROM COMPANY;
+ RECORDS
+---------
+@@ -143,13 +148,15 @@ postgres=# SELECT CURRENT_TIMESTAMP;
+ 2021-08-30 14:49:57.980362+05:30
+(1 row)
+
+
+postgres=# SELECT * FROM COMPANY WHERE AGE >= 25 AND SALARY >= 65000;
+ id | name  | age |                      address                       | salary | join_date
+----+-------+-----+----------------------------------------------------+--------+------------
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+(2 rows)
+
+
+postgres=# SELECT * FROM COMPANY WHERE AGE >= 25 OR SALARY >= 65000;
+ id | name  | age |                      address                       | salary | join_date
+----+-------+-----+----------------------------------------------------+--------+------------
+@@ -236,6 +243,7 @@ postgres-#         WHERE EXISTS (SELECT AGE FROM COMPANY WHERE SALARY > 65000);
+(5 rows)
+
+
+
+postgres=# SELECT * FROM COMPANY
+postgres-#         WHERE AGE > (SELECT AGE FROM COMPANY WHERE SALARY > 65000);
+ id | name | age |                      address                       | salary | join_date
+@@ -244,6 +252,7 @@ postgres-#         WHERE AGE > (SELECT AGE FROM COMPANY WHERE SALARY > 65000);
+(1 row)
+
+
+
+postgres=# SELECT * FROM COMPANY LIMIT 4;
+ id | name  | age |                      address                       | salary | join_date
+----+-------+-----+----------------------------------------------------+--------+------------
+@@ -273,6 +282,7 @@ postgres=# SELECT * FROM COMPANY ORDER BY NAME DESC;
+  2 | Allen |  25 | Texas                                              |        | 2007-08-29
+(5 rows)
+
+
+postgres=# UPDATE COMPANY SET SALARY = 15000 WHERE ID = 3;
+UPDATE 1
+postgres=# UPDATE COMPANY SET ADDRESS = 'Texas', SALARY=20000;
