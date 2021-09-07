@@ -1,0 +1,113 @@
+/////-----------------------DAY 1 THA----Install Redis and Postgres + Basic Commands ------------------------------------------///////
+
+# Redis Installation
+
+1) For Windows
+	- Enable WSL from "Turn Windows features on or off settings"
+	- Restart the machine
+	- Install Ubuntu20.04 from Windows Store
+	- Open Ubuntu and setup name and password
+	- Run the following commands:
+		> sudo apt-get update
+		> sudo apt-get upgrade
+		> sudo apt-get install redis-server
+		> sudo service redis-server restart
+		> redis-cli
+
+2) For Linux
+	- Run the commands:
+		> sudo apt-get install redis-server
+		> sudo service redis-server restart
+		> redis-cli
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+USAGE
+
+About redis  commands
+
+-redis cli              ->  to enter in redis (command line interface )
+
+___________________________________________________________________________________________________________________________________________________
+___________________________for strigs _____________________________________________________________________________________________________________
+
+   |  commands   |                           |   What They do ?    |                                       | Commands Syntax |
+
+ 
+- SET key value                         =>  sets a value to a key                                       : set < key name> <value>
+- GET key				=>  gets a value from a key                                     : get <key name>
+- ttl key				=>  ttl(time to leave) it expire the key at given time          : ttl <key name> <time>
+- KEYS *				=>  show all exist  keys                                        : key * 
+- DEL key			        =>  deletes a key and its value                                 : del <key name>
+- FLUSHALL				=>  deletes all key                                             : flushall
+- EXISTS key			        =>  if key exit return 1 otherwise 0 (for key check)            : exists <key name>
+- expire key time		        =>  automatically delete  the key after the specific time       : expire <key>  <time>                                      
+- setex key time value                  =>  set and expire key at same time                             : setex <key name> <time> <value>
+
+
+Note:- ttl key return -1 (-1 means key ka koi expire time set nhi h) 
+       ttl key return -2 (-2 means key automatically expire or delete ho gyi h )
+____________________________________________________________________________________________________________________________________________________
+_______________________________For Arrays___________________________________________________________________________________________________________
+
+ |  commands   |                           |   What They do ?    |                                       | Commands Syntax |
+
+
+- LPUSH array value                    => push the element at 0th index                                 : lpush <key name> <value>
+- RPUSH array value                    => add the element at last index                                 : rpush <key name> <value>
+- LRANGE array start stop              => get range of elements from a list                             : lrange <key name>  <start> <end>
+
+- LPOP array			       => removes and gets  the first element of list                   : lpop <key name> 
+                                       (array me se left side ki value ko pop karega)
+
+- RPOP array			       => removes and gets  the last element of list 	                : rpop <key name>
+					(array me se right side ki value ko pop karega)
+
+
+____________________________________________________________________________________________________________________________________________________
+_______________________________ For Sets ___________________________________________________________________________________________________________
+
+ |  commands   |                           |   What They do ?    |                                           | Commands Syntax |
+
+
+- SADD myset value                     => it dosent repeat the key                                       : sadd <key name> <value>
+- SMEMBERS myset		       => to get  all the members of the set 	                         : smembers <key>   
+
+
+___________________________________________________________________________________________________________________________________________________
+______________________________For Object/Hash______________________________________________________________________________________________________
+
+ |  commands   |                           |   What They do ?    |                                           | Commands Syntax |
+
+
+- HSET key field value		        => sets the hash field with string value                          : hset <key name1> <key name1.5> <value>
+- HGET key field			=> gets the hash field with string value		          : hget <key name1> <key name1.5>
+- HGETALL key				=> gets all the fields and values in a specific key               : hgetall <key>
+- HDEL key field			=> delete the hash field 				          : hdel <key> <field>
+- HEXISTS key field			=> exist the hash field                                           : hexists <key>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Postgres commands 
+
+        |  commands   |                                     |   What They do ?    |
+
+-psqual -u <user name>                               => To enter in postgress ( we have to provide user name and password )
+-CREATE USER <user name> WITH PASSWORD '123456';     => to create user name and password  
+-CREATE DATABASE devs;
+-\l                                                  => List all available databases, then exit
+-\d <table name>                                     => show the whole table 
+DROP TABLE <table name>                              => for delete table 
+\q                                                   => quit
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+******************************************************************* Completed THA 1 *********************************************************************
+---------------------------------------------------------------------------------------------------------------------------------------------------------
