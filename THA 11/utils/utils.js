@@ -15,4 +15,3 @@ module.exports = {
     emailValidate,
     passwordValidate
 }
-© 2021 GitHub, Inc.
